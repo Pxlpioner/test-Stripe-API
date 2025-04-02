@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createPaymentIntent, webhook } = require('../controllers/stripeController.js');
+const { createPaymentIntent, webhook } = require('./stripeController.js');
 
 router.post('/payment-intent', createPaymentIntent);
 

@@ -12,11 +12,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const cors = require('cors');
 dotenv.config();
 
-require('./models/user-model');
-require('./models/visual-model');
-require('./models/admin-model');
-require('./models/campaign-model');
-require('./models/donation-model');
+require('./donation-model');
 
 const app = express();
 
@@ -59,22 +55,8 @@ app.use(cors({
 }));
 
 // ROUTES
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const campaignsRouter = require('./routes/campaigns');
-const adminsRouter = require('./routes/admins');
-const donationsRouter = require('./routes/donations');
-const visualsRouter = require('./routes/visuals');
-const stripeRoutes = require('./routes/stripeRoutes');
-const refreshTokenRouter = require('./routes/accessTokenRenewal');
+const stripeRoutes = require('./stripeRoutes');
 
-app.use('/api/home',      indexRouter);
-app.use('/api/users',     usersRouter);
-app.use('/api/campaigns', campaignsRouter);
-app.use('/api/admins',    adminsRouter);
-app.use('/api/donations', donationsRouter);
-app.use('/api/visuals',   visualsRouter);
-app.use('/api',           refreshTokenRouter);
 app.use('/api/payments',  stripeRoutes);
 
 // catch 404 and forward to error handler

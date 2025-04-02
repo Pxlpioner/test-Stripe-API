@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const PUBLIC_KEY = process.env.STRIPE_PUBLIC_KEY;
 const ENDPOINT_SECRET = process.env.STRIPT_WEBHOOK_SECRET;
-const Donation = require('../models/donation-model');
+const Donation = require('./donation-model');
 require('dotenv').config();
 
 async function createPaymentIntent(req, res) {
